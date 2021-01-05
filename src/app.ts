@@ -3,6 +3,7 @@ import { Logger } from "logger-flx";
 import { Singleton } from "di-ts-decorators";
 import { KoaD } from "koa-ts-decorators";
 import { Authorization } from "./lib/authorization";
+import * as chalk from "chalk";
 
 console.log(JSON.stringify(config, null, 4));
 
@@ -23,7 +24,7 @@ const bootstrap = async () => {
         api_server.context.authorization = authorization;
 
         await api_server.listen( () => {
-            logger.info(`[api-server] listening on network interface ${api_server.config.listening}${api_server.prefix}`);
+            logger.info(`[api-server] listening on network interface ${chalk.gray(`${api_server.config.listening}${api_server.prefix}`)}`);
         });
 
     } catch (error) {
